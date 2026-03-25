@@ -6,19 +6,15 @@ spring:
     name: admin-service
 
   datasource:
-    url: jdbc:mysql://localhost:3306/admin_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
-    username: root
-    password: "@Kussu321"
+    url: jdbc:mysql://admin-db:3306/admin_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: ${ADMIN_SERVICE_DB_USERNAME}
+    password: ${ADMIN_SERVICE_DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQLDialect
-        format_sql: true
 
   autoconfigure:
     exclude:
@@ -28,7 +24,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://eureka-server:8761/eureka/
   instance:
     prefer-ip-address: true
 

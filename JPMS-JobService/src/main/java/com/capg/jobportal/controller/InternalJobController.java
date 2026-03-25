@@ -2,6 +2,21 @@ package com.capg.jobportal.controller;
 
 import java.util.List;
 
+
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import com.capg.jobportal.dto.JobResponseDTO;
+import com.capg.jobportal.service.JobService;
+
+import io.swagger.v3.oas.annotations.Hidden;
+
+
 /*
  * ================================================================
  * AUTHOR: Kushagra Varshney
@@ -15,17 +30,7 @@ import java.util.List;
  * (e.g., AdminService) and is NOT exposed to end users via API Gateway.
  * ================================================================
  */
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import com.capg.jobportal.dto.JobResponseDTO;
-import com.capg.jobportal.service.JobService;
-
+@Hidden
 @RestController
 @RequestMapping("/api/internal")
 public class InternalJobController {
