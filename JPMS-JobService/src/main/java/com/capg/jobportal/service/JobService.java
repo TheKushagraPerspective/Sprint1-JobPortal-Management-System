@@ -87,6 +87,7 @@ public class JobService {
      // Publish event to RabbitMQ after job is saved
         JobPostedEvent event = new JobPostedEvent(
                 saved.getId(),
+                saved.getPostedBy(),
                 saved.getTitle(),
                 saved.getCompanyName(),
                 saved.getLocation(),

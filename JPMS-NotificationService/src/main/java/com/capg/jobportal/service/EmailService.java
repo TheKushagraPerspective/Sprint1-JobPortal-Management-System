@@ -53,4 +53,23 @@ public class EmailService {
                "Log in to the Job Portal to review the application.\n\n" +
                "Best regards,\nJob Portal Team";
     }
+    
+    public void sendJobPostedConfirmation(String recruiterEmail, JobPostedEvent event) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(recruiterEmail);
+        message.setSubject("Job Posted Successfully: " + event.getTitle());
+        message.setText(
+            "Hello Recruiter,\n\n" +
+            "Your job posting has been published successfully!\n\n" +
+            "Job Title    : " + event.getTitle() + "\n" +
+            "Company      : " + event.getCompanyName() + "\n" +
+            "Location     : " + event.getLocation() + "\n" +
+            "Job Type     : " + event.getJobType() + "\n" +
+            "Salary       : " + (event.getSalary() != null ? event.getSalary() : "Not specified") + "\n" +
+            "Experience   : " + (event.getExperienceYears() != null ? event.getExperienceYears() + " years" : "Not specified") + "\n\n" +
+            "Job seekers are being notified about your posting.\n\n" +
+            "Best regards,\nJob Portal Team"
+        );
+        mailSender.send(message);
+    }
 }

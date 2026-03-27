@@ -55,12 +55,12 @@ public class CloudinaryUtil {
         Map result = getCloudinary().uploader().upload(
                 file.getBytes(),
                 ObjectUtils.asMap(
-                		"folder", "jobportal/resumes",
+                        "folder", "jobportal/resumes",
                         "resource_type", "raw",
                         "public_id", uniqueFilename,
                         "access_mode", "public",
                         "type", "upload"
-                )
+                    )
         );
         return result.get("secure_url").toString();
     }

@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 public class JobPostedEvent {
 
     private Long jobId;
+    private Long recruiterId;
     private String title;
     private String companyName;
     private String location;
@@ -19,11 +20,12 @@ public class JobPostedEvent {
     public JobPostedEvent() {
     }
 
-    public JobPostedEvent(Long jobId, String title, String companyName,
+    public JobPostedEvent(Long jobId, long recruiterId, String title, String companyName,
                           String location, String jobType,
                           BigDecimal salary, Integer experienceYears,
                           String description) {
         this.jobId = jobId;
+        this.recruiterId = recruiterId;
         this.title = title;
         this.companyName = companyName;
         this.location = location;
@@ -38,6 +40,9 @@ public class JobPostedEvent {
 
     public String getTitle() { return title; }
     public void setTitle(String title) { this.title = title; }
+    
+    public Long getRecruiterId() { return recruiterId; }
+    public void setRecruiterId(Long recruiterId) { this.recruiterId = recruiterId; }
 
     public String getCompanyName() { return companyName; }
     public void setCompanyName(String companyName) { this.companyName = companyName; }

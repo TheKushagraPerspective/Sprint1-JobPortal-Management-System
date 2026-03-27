@@ -1,4 +1,4 @@
-package com.capg.jobportal.controller;
+	package com.capg.jobportal.controller;
 
 import java.io.IOException;
 import java.util.Map;

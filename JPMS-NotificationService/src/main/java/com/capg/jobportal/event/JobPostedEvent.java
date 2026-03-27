@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 public class JobPostedEvent {
     private Long jobId;
+    private Long recruiterId;
     private String title;
     private String companyName;
     private String location;
@@ -17,6 +18,8 @@ public class JobPostedEvent {
     // all getters and setters same as Job Service version
     public Long getJobId() { return jobId; }
     public void setJobId(Long jobId) { this.jobId = jobId; }
+    public Long getRecruiterId() { return recruiterId; }
+    public void setRecruiterId(Long recruiterId) { this.recruiterId = recruiterId; }
     public String getTitle() { return title; }
     public void setTitle(String title) { this.title = title; }
     public String getCompanyName() { return companyName; }

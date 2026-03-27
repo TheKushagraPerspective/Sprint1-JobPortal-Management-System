@@ -44,7 +44,7 @@ public class CloudinaryUtil {
                         "public_id", uniqueFilename,
                         "access_mode", "public",
                         "type", "upload"
-                )
+                    )
         );
  
         return result.get("secure_url").toString();

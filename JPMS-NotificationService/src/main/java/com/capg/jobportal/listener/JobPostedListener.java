@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.capg.jobportal.client.AuthServiceClient;
+import com.capg.jobportal.dto.UserInfoResponse;
 import com.capg.jobportal.event.JobPostedEvent;
 import com.capg.jobportal.service.EmailService;
 
@@ -24,7 +25,18 @@ public class JobPostedListener {
         System.out.println("Received job posted event: " + event.getTitle());
 
         try {
-            // Feign client call — no URL, no RestTemplate, no boilerplate
+            // 1. Send confirmation email to the recruiter who posted the job
+            if (event.getRecruiterId() != null) {
+                try {
+                    UserInfoResponse recruiter = authServiceClient.getUserInfo(event.getRecruiterId());
+                    emailService.sendJobPostedConfirmation(recruiter.getEmail(), event);
+                    System.out.println("Confirmation email sent to recruiter: " + recruiter.getEmail());
+                } catch (Exception e) {
+                    System.err.println("Failed to send confirmation email to recruiter: " + e.getMessage());
+                }
+            }
+
+            // 2. Send job alert emails to all active job seekers
             List<String> emails = authServiceClient.getJobSeekerEmails();
 
             if (emails != null && !emails.isEmpty()) {
