@@ -34,7 +34,7 @@
                 <TimeBasedTriggeringPolicy interval="1"/>
                 <SizeBasedTriggeringPolicy size="10MB"/>
             </Policies>
-
+	
             <DefaultRolloverStrategy max="30"/>
         </RollingFile>
 
